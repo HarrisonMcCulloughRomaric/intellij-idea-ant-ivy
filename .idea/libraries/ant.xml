@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="ant">
+    <CLASSES>
+      <root url="file://$ANT_HOME$/lib" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$ANT_HOME$/lib" />
+    </SOURCES>
+    <jarDirectory url="file://$ANT_HOME$/lib" recursive="false" />
+    <jarDirectory url="file://$ANT_HOME$/lib" recursive="false" type="SOURCES" />
+  </library>
+</component>
