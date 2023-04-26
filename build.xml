@@ -1,0 +1,42 @@
+<project default="run" xmlns:ivy="antlib:org.apache.ivy.ant">
+
+    <target name="run" depends="jar">
+        <java classname="scratch.Main" classpathref="classpath.run" fork="true">
+            <arg value="my"/>
+            <arg value="message"/>
+        </java>
+    </target>
+
+    <target name="jar" depends="compile">
+        <mkdir dir="build/jar"/>
+        <jar destfile="build/jar/HelloWorld.jar" basedir="build/classes">
+            <manifest>
+                <attribute name="Main-Class" value="scratch.Main"/>
+            </manifest>
+        </jar>
+    </target>
+
+    <target name="compile" depends="resolve">
+        <mkdir dir="build/classes"/>
+        <javac srcdir="src" destdir="build/classes" classpathref="classpath.compile"/>
+    </target>
+
+    <target name="resolve">
+        <ivy:retrieve/>
+    </target>
+
+    <path id="classpath.compile">
+        <fileset dir="lib" includes="**/*.jar"/>
+    </path>
+
+    <path id="classpath.run">
+        <path refid="classpath.compile"/>
+        <fileset dir="build/jar" includes="**/*.jar"/>
+    </path>
+
+    <target name="clean">
+        <delete dir="build"/>
+        <delete dir="lib"/>
+    </target>
+
+</project>
